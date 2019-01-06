@@ -69,6 +69,9 @@ class Command(BaseCommand):
             offset_number = options['offset_number']
             limit_number = options['limit_number'][0]
 
+            print(f"[{datetime.now().strftime('%A, %d. %B %Y %I:%M:%S%p')}] Offset: {offset_number}")
+            print(f"[{datetime.now().strftime('%A, %d. %B %Y %I:%M:%S%p')}] Limit: {limit_number}")
+
             """Create the url that will be used in the function page_scrapper."""
             while True:
                 base = 'https://tools.wmflabs.org/enwp10/cgi-bin/list2.fcgi?run=yes'
@@ -93,5 +96,7 @@ class Command(BaseCommand):
                     new_page.tags.add(*new_tags)
 
                 offset_number += limit_number
+                print(f"[{datetime.now().strftime('%A, %d. %B %Y %I:%M:%S%p')}] Offset: {offset_number}")
+
                 if len(pages) == 0:
                     break
