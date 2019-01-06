@@ -56,6 +56,9 @@ def page_scrapper(url):
 
 
 class Command(BaseCommand):
+    def add_arguments(self, parser):
+        parser.add_argument('limit_number', nargs='+', type=int)
+
     def handle(self, *args, **options):
         print("Starting download...")
         for project_name in project_list:
@@ -63,7 +66,7 @@ class Command(BaseCommand):
 
             """Include the information about the project and page that will be used."""
             offset_number = 1
-            limit_number = 3
+            limit_number = options['limit_number'][0]
 
             """Create the url that will be used in the function page_scrapper."""
             while True:
