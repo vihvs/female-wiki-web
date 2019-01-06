@@ -10,7 +10,7 @@ class Tag(models.Model):
 
 class Page(models.Model):
     name = models.CharField(max_length=250)
-    link = models.URLField()
+    link = models.URLField(max_length=500)
     summary = models.TextField()
     tags = models.ManyToManyField(Tag)
 
