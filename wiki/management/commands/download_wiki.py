@@ -13,6 +13,7 @@ from textblob import TextBlob
 wikipedia.set_rate_limiting(True, min_wait=timedelta(milliseconds=100))
 
 project_list = ['WikiProject_Women', 'Women%27s_History', 'Women_writers', 'Women_scientists', 'Women_artists', 'Women%27s_sport']
+quality_list = ['FA-Class', 'A-Class', 'GA-Class', 'B-Class', 'C-Class']
 
 
 def page_scrapper(url):
@@ -65,38 +66,41 @@ class Command(BaseCommand):
         for project_name in project_list:
             print(f"[{datetime.now().strftime('%A, %d. %B %Y %I:%M:%S%p')}] Downloading Pages for project: {project_name}")
 
-            """Include the information about the project and page that will be used."""
-            offset_number = options['offset_number']
-            limit_number = options['limit_number'][0]
+            for quality_class in quality_list:
 
-            print(f"[{datetime.now().strftime('%A, %d. %B %Y %I:%M:%S%p')}] Offset: {offset_number}")
-            print(f"[{datetime.now().strftime('%A, %d. %B %Y %I:%M:%S%p')}] Limit: {limit_number}")
+                """Include the information about the project and page that will be used."""
+                offset_number = options['offset_number']
+                limit_number = options['limit_number'][0]
 
-            """Create the url that will be used in the function page_scrapper."""
-            while True:
-                base = 'https://tools.wmflabs.org/enwp10/cgi-bin/list2.fcgi?run=yes'
-                project = f'&projecta={project_name}'
-                limit = f'&limit={limit_number}'
-                offset = f'&offset={offset_number}'
-
-                url = base + project + limit + offset
-                print(f"[{datetime.now().strftime('%A, %d. %B %Y %I:%M:%S%p')}] Downloading url: {url}")
-
-                pages = page_scrapper(url)
-                for page in pages:
-                    tags = page.pop("tags")
-                    new_page = Page.objects.create(**page)
-                    print(f"[{datetime.now().strftime('%A, %d. %B %Y %I:%M:%S%p')}] Page: {new_page}")
-
-                    new_tags = []
-                    for tag, _ in tags:
-                        tag, created = Tag.objects.get_or_create(text=tag)
-                        new_tags.append(tag)
-
-                    new_page.tags.add(*new_tags)
-
-                offset_number += limit_number
                 print(f"[{datetime.now().strftime('%A, %d. %B %Y %I:%M:%S%p')}] Offset: {offset_number}")
+                print(f"[{datetime.now().strftime('%A, %d. %B %Y %I:%M:%S%p')}] Limit: {limit_number}")
 
-                if len(pages) == 0:
-                    break
+                """Create the url that will be used in the function page_scrapper."""
+                while True:
+                    base = 'https://tools.wmflabs.org/enwp10/cgi-bin/list2.fcgi?run=yes'
+                    project = f'&projecta={project_name}'
+                    limit = f'&limit={limit_number}'
+                    offset = f'&offset={offset_number}'
+                    quality = f'&quality={quality_class}'
+
+                    url = base + project + limit + offset + quality
+                    print(f"[{datetime.now().strftime('%A, %d. %B %Y %I:%M:%S%p')}] Downloading url: {url}")
+
+                    pages = page_scrapper(url)
+                    for page in pages:
+                        tags = page.pop("tags")
+                        new_page = Page.objects.create(**page)
+                        print(f"[{datetime.now().strftime('%A, %d. %B %Y %I:%M:%S%p')}] Page: {new_page}")
+
+                        new_tags = []
+                        for tag, _ in tags:
+                            tag, created = Tag.objects.get_or_create(text=tag)
+                            new_tags.append(tag)
+
+                        new_page.tags.add(*new_tags)
+
+                    offset_number += limit_number
+                    print(f"[{datetime.now().strftime('%A, %d. %B %Y %I:%M:%S%p')}] Offset: {offset_number}")
+
+                    if len(pages) == 0:
+                        break
