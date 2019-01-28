@@ -1,5 +1,12 @@
-from django.http import HttpResponse
+from django.views.generic.list import ListView
 
+from wiki.models import Page
 
-def index(request):
-    return HttpResponse("Hello, world.")
+class PageListView(ListView):
+
+    model = Page
+
+    def get_queryset(self):
+        tags = self.request.GET['tags'].split(',')
+        queryset = super().get_queryset()
+        return queryset.filter(tags__text__in=tags)[:30]
