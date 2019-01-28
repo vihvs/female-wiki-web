@@ -9,7 +9,6 @@ class PageListView(ListView):
 
     def get_queryset(self):
         tags = self.request.GET['tags'].replace(" ","").split(',')
-        print(tags)
         queryset = super().get_queryset()
         for tag in tags:
             queryset = queryset.filter(tags__text__icontains=tag)
