@@ -8,9 +8,12 @@ class PageListView(ListView):
     model = Page
 
     def get_queryset(self):
-        tags = self.request.GET['tags'].split(',')
+        tags = self.request.GET['tags'].replace(" ","").split(',')
+        print(tags)
         queryset = super().get_queryset()
-        return queryset.filter(tags__text__in=tags)[:30]
+        for tag in tags:
+            queryset = queryset.filter(tags__text__icontains=tag)
+        return queryset[:30]
 
 class SearchView(TemplateView):
      template_name = "wiki/search.html"
