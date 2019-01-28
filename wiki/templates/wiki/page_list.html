@@ -55,6 +55,7 @@
             <h1>Results</h1>
             <p class="lead">There is a awesome woman in every field. Here you can find them.</p>
         </div>
+        {% if object_list %}
         {% for page in object_list %}
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -65,6 +66,9 @@
             </div>
         </div>
         {% endfor %}
+        {% else %}
+        <p>No Results</p>
+        {% endif %}
         <div class="pagination">
             <span class="step-links">
                 {% if page_obj.has_previous %}
