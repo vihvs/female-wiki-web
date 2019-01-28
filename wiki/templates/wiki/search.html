@@ -55,16 +55,13 @@
             <h1>Results</h1>
             <p class="lead">There is a awesome woman in every field. Here you can find them.</p>
         </div>
-        {% for page in object_list %}
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">{{ page.name }} - <a href="{{ page.link }}" target="_blank">{{ page.link }}</a></h3>
-            </div>
-            <div class="panel-body" style="line-height: 1.7;">
-                {{ page.summary }}
-            </div>
-        </div>
-        {% endfor %}
+        <form method="GET" action="{% url 'page-list'%}">
+                <div class="form-group">
+                  <label for="tags">Tags</label>
+                  <input type="text" class="form-control" id="tags" name="tags" placeholder="Singer,Chicago">
+                </div>
+                         <button type="submit" class="btn btn-default">Submit</button>
+              </form>
 
 
 
