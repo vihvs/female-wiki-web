@@ -22,3 +22,15 @@ body {
     padding: 40px 15px;
     text-align: center;
 }
+
+.names {
+    font-size: 13px;
+    font-weight: 600;
+
+}
+
+.summary {
+    font-size: 12px;
+    padding: 20px;
+
+}
