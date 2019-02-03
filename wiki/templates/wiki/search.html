@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
 
@@ -16,65 +17,50 @@
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
     <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="{% static "/css/main.css" %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" integrity="sha384-PmY9l28YgO4JwMKbTvgaS7XNZJ30MK9FAZjjzXtlqyZCqBY6X6bXIkM++IkyinN+"
         crossorigin="anonymous">
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap-theme.min.css"
-        integrity="sha384-jzngWsPS6op3fgRCDTESqrEJwRKck+CILhJVO5VvaAZCq8JYf8HsR/HPpBOOPZfR" crossorigin="anonymous">
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Roboto+Mono">
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js" integrity="sha384-vhJnz1OVIdLktyixHY4Uk3OHEwdQqPppqYR8+5mjsauETgLOcEynD9oPHhhz18Nw"
         crossorigin="anonymous"></script>
-
-    <style type="text/css" media="screen">
-        body {
-            padding-top: 50px;
-        }
-
-        .starter-template {
-            padding: 40px 15px;
-            text-align: center;
-        }
-    </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="{% url 'search'%}">Female Reference</a>
-            </div>
-            <!--/.nav-collapse -->
-        </div>
-    </nav>
-
     <div class="container">
 
         <div class="starter-template">
-            <h1>Results</h1>
-            <p class="lead">There is a awesome woman in every field. Here you can find them.</p>
+            <h1 class="title">Female Reference</h1>
+            <p class="subtitle">There is an awesome woman in every field. Here you can find them.</p>
         </div>
         <form method="GET" action="{% url 'page-list'%}">
-                <div class="form-group">
-                  <label for="tags">Tags</label>
-                  <input type="text" class="form-control" id="tags" name="tags" placeholder="Singer, Chicago">
-                </div>
-                         <button type="submit" class="btn btn-default">Submit</button>
-              </form>
+            <div class="form-group">
+                <p>Insert, separate with commas, professions, cities names and other characteristics to find articles
+                    that matches this words</p>
+                <input type="text" class="form-control" id="tags" name="tags" placeholder="Singer, Chicago">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+<br>
+<br>
+<br>
+<br>
+<p class="footer"> 💕 This webpage was made for Jolt mentorship project in Berlin by a Brazilian immigrant. See more in my Github. 💕</p>
 
-
+    
 
     </div><!-- /.container -->
 
-
+    
     <!-- Bootstrap core JavaScript
           ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
         crossorigin="anonymous"></script>
-
-
+    
 </body>
 
 </html>
