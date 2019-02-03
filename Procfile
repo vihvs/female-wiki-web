@@ -1,0 +1,1 @@
+web: gunicorn female_wiki_web.wsgi
