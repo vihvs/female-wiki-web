@@ -3,6 +3,16 @@
 <html lang="en">
 
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133716422-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-133716422-1');
+    </script>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,7 +31,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" integrity="sha384-PmY9l28YgO4JwMKbTvgaS7XNZJ30MK9FAZjjzXtlqyZCqBY6X6bXIkM++IkyinN+"
         crossorigin="anonymous">
 
-  
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Roboto+Mono">
 
     <!-- Latest compiled and minified JavaScript -->
@@ -38,32 +48,33 @@
         </div>
         <form method="GET" action="{% url 'page-list'%}">
             <div class="form-group">
-                <p>Insert, separate with commas, professions, cities names and other characteristics to find articles
+                <p>Insert - separate with commas - professions, cities names and other characteristics to find articles
                     that matches this words</p>
                 <input type="text" class="form-control" id="tags" name="tags" placeholder="Singer, Chicago">
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
         </form>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<p class="footer"> 💕 This webpage was made for Jolt mentorship project. <a href="https://github.com/vihvs/female-wiki-web">See more in my Github.</a> 💕</p>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <p class="footer"> 💕 This webpage was made for Jolt mentorship project. <a href="https://github.com/vihvs/female-wiki-web">See
+                more in my Github.</a> 💕</p>
 
-    
+
 
     </div><!-- /.container -->
 
-    
+
     <!-- Bootstrap core JavaScript
           ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
         crossorigin="anonymous"></script>
-    
+
 </body>
 
 </html>

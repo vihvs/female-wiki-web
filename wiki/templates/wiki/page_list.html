@@ -3,6 +3,16 @@
 <html lang="en">
 
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133716422-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-133716422-1');
+    </script>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -62,28 +72,29 @@
         </div>
         {% endfor %}
         <div class="pagination">
-                <span class="step-links">
-                    {% if page_obj.has_previous %}
-                    <a href="?page=1&tags={{ request.GET.tags }}">&laquo; first</a>
-                    <a href="?page={{ page_obj.previous_page_number }}&tags={{ request.GET.tags }}">previous</a>
-                    {% endif %}
-    
-                    <span class="current">
-                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-                    </span>
-    
-                    {% if page_obj.has_next %}
-                    <a href="?page={{ page_obj.next_page_number }}&tags={{ request.GET.tags }}">next</a>
-                    <a href="?page={{ page_obj.paginator.num_pages }}&tags={{ request.GET.tags }}">last &raquo;</a>
-                    {% endif %}
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                <a href="?page=1&tags={{ request.GET.tags }}">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}&tags={{ request.GET.tags }}">previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
                 </span>
-            </div>
+
+                {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}&tags={{ request.GET.tags }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}&tags={{ request.GET.tags }}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
         {% else %}
         <h2>Sorry, no results found</h2>
         <p>But I'm sure that there is an awesome woman somewhere that matches this characteristics.</p>
-        <a href="https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Women" target="_blank">Know how to help Wikipedia include more women's biographies</a> 
+        <a href="https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Women" target="_blank">Know how to help Wikipedia
+            include more women's biographies</a>
         {% endif %}
-        
+
 
 
 
